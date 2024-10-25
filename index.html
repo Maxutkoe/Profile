@@ -506,8 +506,8 @@ body {
 	<div class="row">
 		<div class="col-md-4">
     <div class="profile-card-2"><img src="https://i.postimg.cc/QNbNrJcZ/photo-2024-10-04-18-03-05.jpg" class="img img-responsive">
-        <div class="profile-name" id="profile-name">ИМЯ ФАМИЛИЯ</div>
-        <div class="profile-username" id="profile-username">@Test</div>
+        <input class="profile-name" id="profile-name" value="ИМЯ ФАМИЛИЯ" readonly>
+        <input class="profile-username" id="profile-username" value="@Test" readonly>
         <div class="profile-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
     </div>
     <div class="grid align__item">
@@ -562,11 +562,12 @@ body {
             let name = document.getElementById("profile-name");
             let username = document.getElementById("profile-username");
             tg.expand();
+
             window.setInterval(prize, 3000);
 
             async function prize(){
               name.value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
-              username.value = tg.initDataUnsafe.user.username;
+              username.value = "@" + tg.initDataUnsafe.user.username;
               console.log(tg.initDataUnsafe.user.photo_url);
             }
         </script>
