@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+      <style id="INLINE_PEN_STYLESHEET_ID">
+    * {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #f1f1f1;
+  color: #171a1c;
+  font: 300 1rem/1.5 Source Sans Pro, sans-serif;
+  margin: 0;
+  min-height: 100%;
+  padding: 5vw 0;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.align {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.align__item--start {
+  align-self: flex-start;
+}
+.align__item--end {
+  align-self: flex-end;
+}
+
+.text--center {
+  text-align: center;
+}
+
+.card {
+  background-color: #171a1c;
+  border-radius: 1rem;
+  color: #47474e;
+  padding: 2rem;
+  font-family: Abel;
+}
+.card__header {
+  margin-bottom: 4rem;
+}
+.card__header:before, .card__header:after {
+  content: " ";
+  display: table;
+}
+.card__header:after {
+  clear: both;
+}
+.card__title {
+  color: #fff;
+  float: left;
+  font-size: 1.5rem;
+}
+.card__logo {
+  float: right;
+}
+.card__number__input {
+  font-size: 2rem;
+}
+.card__expiration {
+  float: left;
+}
+.card__ccv {
+  float: right;
+}
+.card__ccv__input {
+  width: 3.7rem;
+}
+.card .ui-selectmenu-button {
+  float: left;
+  margin-right: 2rem;
+}
+
+input {
+  background-color: transparent;
+  border: 0;
+  color: #fff;
+  font: inherit;
+  width: auto;
+}
+input::placeholder {
+  color: #fff;
+}
+
+label {
+  display: block;
+}
+
+.form:before, .form:after {
+  content: " ";
+  display: table;
+}
+.form:after {
+  clear: both;
+}
+.form__field {
+  margin-bottom: 1.5rem;
+}
+.form input {
+  outline: 0;
+}
+.form input[type=email], .form input[type=password] {
+  width: 100%;
+}
+
+.grid {
+  margin: 0 auto;
+  max-width: 36rem;
+  width: 90%;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.5rem;
+}
+
+svg {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+a {
+  color: #171a1c;
+}
+
+.ui-selectmenu-menu {
+  display: none;
+  font-family: Abel;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+}
+.ui-selectmenu-menu li {
+  background-color: #171a1c;
+  color: #fff;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+}
+.ui-selectmenu-menu li.ui-state-focus {
+  background-color: #47474e;
+}
+.ui-selectmenu-menu .ui-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow: auto;
+}
+.ui-selectmenu-open {
+  display: block;
+}
+.ui-selectmenu-button {
+  color: #fff;
+  cursor: pointer;
+  outline: 0;
+}
+.ui-selectmenu-button.ui-corner-top .ui-icon-triangle-1-s {
+  transform: rotate(-180deg);
+}
+.ui-selectmenu-button .ui-icon-triangle-1-s {
+  background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-254 408.9 42 24" fill="#47474e"><path d="M-212 411.9c0-1.7-1.3-3-3-3-.8 0-1.5.3-2.1.8l-15.9 15.9-15.7-15.7c-.5-.6-1.4-1-2.3-1-1.7 0-3 1.3-3 3 0 .8.3 1.5.8 2.1l18 18c.5.6 1.3.9 2.2.9.8 0 1.6-.4 2.2-.9l18-18c.5-.6.8-1.3.8-2.1z"/></svg>') 50%/14px no-repeat;
+  float: right;
+  height: 14px;
+  margin-top: 5px;
+  transform-origin: 50%;
+  transition: transform 0.3s;
+  width: 14px;
+}
+  </style>
+
+</head>
+
+<body class="align">
+  
+
+
+
+  <meta charset="UTF-8">
+  <title>Daily UI | #002 - Credit Card Checkout</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <style media="" data-href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Abel">/* latin */
+@font-face {
+  font-family: 'Abel';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/abel/v18/MwQ5bhbm2POE2V9BPQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lqDY.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lqDY.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lqDY.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lqDY.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lqDY.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lqDY.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmhduz8A.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwkxduz8A.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmxduz8A.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlBduz8A.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmBduz8A.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmRduz8A.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+    <style>
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900|Open Sans:400,600,800');
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+input,
+p,
+a {
+    font-family: "Open Sans";
+    margin: 0px;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+}
+
+body {
+    background-color: #F1F2F3;
+}
+
+.container-fluid,
+.container {
+    min-width: 60%;
+    max-width: 100%;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+.card-container {
+    padding: 100px 0px;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+}
+
+.profile-card-2, .profile-card-3 {
+    max-width: 600px;
+    padding: 10px 10px 5px 10px;
+    background-color: transparent;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 1.8);
+    background-position: center;
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+    cursor: pointer;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.profile-card-2 img, .profile-card-3 img {
+    transition: all linear 0.25s;
+    min-width: 60%;
+    max-width: 100%;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.profile-card-2 .profile-name {
+    position: absolute;
+    left: 30px;
+    bottom: 70px;
+    font-size: 30px;
+    color: #FFF;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    transition: all linear 0.25s;
+}
+
+.profile-card-2 .profile-icons {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    color: #FFF;
+    transition: all linear 0.25s;
+}
+
+.profile-card-2 .profile-username {
+    position: absolute;
+    bottom: 50px;
+    left: 30px;
+    color: #FFF;
+    font-size: 13px;
+    transition: all linear 0.25s;
+}
+
+.profile-card-2 .profile-icons .fa {
+    margin: 5px;
+}
+
+.profile-card-2:hover img {
+    filter: grayscale(100%);
+}
+
+.profile-card-2:hover .profile-name {
+    bottom: 80px;
+}
+
+.profile-card-2:hover .profile-username {
+    bottom: 60px;
+}
+
+.profile-card-2:hover .profile-icons {
+    right: 40px;
+}
+    </style>
+ <style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  max-width: 100%;
+  min-width: 10%;
+  letter-spacing: 1.2px;
+  background: linear-gradient(to right, #FFeFFe, #FFFFFF);
+  color: #000000;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+</style>
+<style>
+.header {
+  position: fixed;
+  top: 0;
+  opacity: 1;
+  z-index: 5;
+
+  left: 50%;
+  border-radius: 0px 0px 12px 12px;
+  transform: translateX(-50%);
+  transition: .3s all;
+
+  width: 100%;
+  max-height: 7%;
+  min-height: 7%;
+  background: linear-gradient(to right, #874efe, #4d22b3);
+}
+</style>
+<script>
+    document.addEventListener('scroll', function () {
+        if ($(window).scrollTop() > 1000)) {
+            $('.js-header-fixed').addClass('is-show');
+        } else {
+            $('.js-header-fixed').removeClass('is-show');
+        }
+    })
+</script>
+<header class="header">
+    <div id="ton-connect" style="position: absolute; top: 25%; right: 2%; display:inline;">
+</header>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+    <div class="profile-card-2"><img src="https://i.postimg.cc/QNbNrJcZ/photo-2024-10-04-18-03-05.jpg" class="img img-responsive">
+        <div class="profile-name" id="profile-name">ИМЯ ФАМИЛИЯ</div>
+        <div class="profile-username" id="profile-username">@Test</div>
+        <div class="profile-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
+    </div>
+    <div class="grid align__item">
+
+    <input class="card__number__input" id="prize" style="color: #000000;" readonly>
+    <div class="card">
+
+      <header class="card__header">
+        <h3 class="card__title">Payment Details</h3>
+
+
+      </header>
+
+      <form action="" method="post" class="form">
+
+        <div class="card__number form__field">
+          <label for="card__number" class="card__number__label">Card balance</label>
+          <input type="text" id="card__number" class="card__number__input" value="Connect wallet..." readonly>
+        </div>
+
+        
+        <div class="card__expiration form__field">
+          <label for="card__expiration__year-button">Expiration</label>
+          <span class="ui-selectmenu-button ui-widget ui-state-default ui-corner-all" tabindex="0" id="card__expiration__year-button" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-owns="card__expiration__year-menu" aria-haspopup="true" style="width: 90px;">
+          <span class="ui-icon ui-icon-triangle-1-s"></span>
+          <span class="ui-selectmenu-text">October</span></span>
+        
+        <span class="ui-selectmenu-button ui-widget ui-state-default ui-corner-all" tabindex="0" id="ui-id-1-button" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-owns="ui-id-1-menu" aria-haspopup="true" style="width: 54px;">
+        <span class="ui-icon ui-icon-triangle-1-s"></span>
+        <span class="ui-selectmenu-text">2024</span></span>
+        </div>
+
+        <div class="card__ccv form__field">
+          <label for="">RUB</label>
+          <input type="text" class="card__ccv__input" placeholder="583" id="tonprice">
+        </div>
+
+      </form>
+
+    </div>
+    <br>
+      <div class="grid align__item">
+    <div class="card" id="nftcard">
+      <header class="card__header">
+        <h3 class="card__title">NFTs</h3>
+      </header>
+  </div>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+            let tg = window.Telegram.WebApp;
+            let buy = document.getElementById("order")
+            tg.expand();
+        </script>
+        <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+        <script src="https://unpkg.com/@tonconnect/sdk@0.0.34/dist/tonconnect-sdk.min.js"></script>
+        <script>
+        window.setInterval(data, 3000);
+        window.setInterval(rrr, 1000);
+        window.setInterval(prize, 3000);
+        window.onload = function(){
+          setTimeout(crypto, 1000)
+        }
+        // window.setInterval(crypto, 10000);
+        // window.setInterval(crypto, 1000);
+    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: 'https://raw.githubusercontent.com/Maxutkoe/TgMayson/main/ton-manifest/tonconnect-manifest.json',
+        buttonRootId: 'ton-connect'
+    });
+
+    tonConnectUI.uiOptions = {
+      twaReturnUrl: 'https://t.me/lMaysonlBot'
+    };
+
+    $(function(){
+  var header = $("header"),
+      yOffset = 0,
+      triggerPoint = 150;
+  $(window).scroll(function(){
+    yOffset = $(window).scrollTop();
+    
+    if(yOffset >= triggerPoint){
+      header.addClass("minimized");
+    }else{
+      header.removeClass("minimized");
+    }
+    
+  });
+});
+    async function connectToWallet() {
+        const connectedWallet = await tonConnectUI.connectWallet();
+        // Do something with connectedWallet if needed
+        console.log(connectedWallet);
+    }
+    async function data(){
+      const currentWallet = tonConnectUI.wallet.account.address;
+      const tvaccurl = await fetch(`https://tonapi.io/v2/accounts/${ currentWallet }`);
+      const wallet = await tvaccurl.json();
+      const balance = wallet.balance / 1000000000;
+      const truncateToThree = num => Math.floor(num * 1000) / 1000;
+
+      // let card_number = documnet.getElementById("card__number");
+      document.getElementById("card__number").value = truncateToThree(balance) + " TON";
+      // alert(truncateToThree(balance) + " TON");
+      // alert(currentWallet);
+      // intervalId = window.setInterval(data(), 1000);
+
+    }
+    async function trans(){
+                const transaction = {
+                    validUntil: Math.round(Date.now() / 1000) + 10,
+                    messages: [
+                        {
+                            address: "0:0000000000000000000000000000000000000000000000000000000000000000",
+                            amount: "1000000"
+                        }
+                    ]
+                };
+
+                try{
+                    await tonConnectUI.sendTransaction(transaction);
+                    alert("Вы успешно отправили 0.01 TON!")
+                }
+                catch(e){
+                    console.error(e);
+                }
+    }
+
+    async function test(){
+        const currentWallet = tonConnectUI.wallet.account.address;
+        const currentWalletInfo = tonConnectUI.walletInfo;
+        const currentAccount = tonConnectUI.account.chain;
+        const currentIsConnectedStatus = tonConnectUI.connected;
+
+        alert(currentWallet + " " + currentAccount);
+        
+    }
+
+    // Call the function
+    connectToWallet().catch(error => {
+        console.error("Error connecting to wallet:", error);
+    });
+    async function rrr(){
+      // const url = new URL("https://tonviewer.com/UQANL1PP96rxkyGZfo-pgGd6m3tBdpwlz9EFR2scmW7xQaKd?section=tokens");
+      // alert(url.search.section)
+      // alert(url.searchParams.get('section'));
+      const resp = await fetch('https://tonapi.io/v2/rates?tokens=ton&currencies=ton%2Cusd%2Crub');
+      const data = await resp.json();
+      const currentWallet = tonConnectUI.wallet.account.address;
+      const tvaccurl = await fetch(`https://tonapi.io/v2/accounts/${ currentWallet }`);
+
+      const wallet = await tvaccurl.json();
+      const balance = wallet.balance / 1000000000
+
+      let tonprice = document.getElementById("tonprice");
+      tonprice.placeholder = "≈ " + balance * data.rates.TON.prices.RUB;
+      // console.log(data.rates.TON.prices.RUB);
+    }
+    async function crypto(){
+      const currentWallet = tonConnectUI.wallet.account.address;
+      const tvaccurl = await fetch(`https://tonapi.io/v2/accounts/${ currentWallet }`);
+      const tvjeturl = await fetch(`https://tonapi.io/v2/accounts/${ currentWallet }/jettons`);
+      const tvnfturl = await fetch(`https://tonapi.io/v2/accounts/${ currentWallet }/nfts`);
+      
+      const wallet = await tvaccurl.json();
+      const jettons = await tvjeturl.json();
+      const nfts = await tvnfturl.json();
+
+      const balance = wallet.balance / 1000000000
+      const truncateToTwo = num => Math.floor(num * 100) / 100;
+      const truncateToThree = num => Math.floor(num * 1000) / 1000;
+
+      console.log(truncateToThree(balance) + " TON");
+      // console.log(JSON.stringify(jettons));
+      // for(i in jettons.balances){
+        // console.log(JSON.stringify(jettons.balances[i].jetton.name) + " " + JSON.stringify(truncateToTwo(jettons.balances[i].balance / 1000000000)) + " ≈ " + JSON.stringify(truncateToTwo(jettons.balances[i].balance / 1000000000)));
+      // }
+      console.log("-------------------");
+      console.log(nfts);
+      for(i in nfts){
+        console.log(nfts.nft_items[0].metadata.image);
+      console.log(nfts.nft_items[0].metadata.name);
+      console.log(nfts.nft_items[0].address);
+
+      var nftcard = document.getElementById("nftcard");
+      const nft = document.createElement('div');
+      nft.id = "nft";
+      nftcard.appendChild(nft);
+
+      nft.innerHTML = `
+      <a href="${ nfts.nft_items[0].metadata.external_url }"><div class="tooltip" style="position: relative; color: white; padding: 10px 10px 10px 10px; min-height: 60%; max-heiight: 100%"><span class="tooltiptext">${ nfts.nft_items[0].metadata.description }</span>
+    <img style="border-radius: 12px; min-width: 60%; max-width: 100%; min-height: 60%; max-height: 100%;" src="https://s.getgems.io/nft/s/6664/6664d08e8463d5c3f2821fa7/nft/834141.png"" alt="изображение" class="photo">
+    <div style="position: absolute; top: 3%; right: 6%; z-index: 10; min-width: 10%; max-height: 60%;"><h2 style="font-size: calc(14px + 16 * (40vw / 1280));">${ nfts.nft_items[0].metadata.name }</h2></div>
+   </div></a>
+      `;
+      }
+
+      nft.style=`
+    .photo:hover::after {
+    
+    `
+      // for(i in jettons.balances){
+        // console.log(JSON.stringify(jettons.balances[i].jetton.name) + " " + JSON.stringify(truncateToTwo(jettons.balances[i].balance / 1000000000)) + " ≈ " + JSON.stringify(truncateToTwo(jettons.balances[i].balance / 1000000000)));
+      // }
+    }
+
+    async function prize(){
+        let tg = window.Telegram.WebApp;
+        let name = document.getElementById("profile-name");
+        let username = document.getElementById("profile-username");
+
+        name.value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
+        username.value = tg.initDataUnsafe.user.username;
+        print(tg.initDataUnsafe.user.photo_url);
+        tg.expand();
+    }
+      
+</script>
+
+    </body>
+</html>
