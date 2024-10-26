@@ -364,7 +364,7 @@ body {
 .profile-card-2, .profile-card-3 {
     max-width: 600px;
     padding: 10px 10px 5px 10px;
-    background-color: transparent;
+    background-color: #171a1c;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 1.8);
     background-position: center;
     overflow: hidden;
@@ -567,8 +567,8 @@ body {
             window.setInterval(prize, 3000);
 
             async function prize(){
-              name = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
-              username = "@" + tg.initDataUnsafe.user.username;
+              name.innerHTML = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
+              username.innerHTML = "@" + tg.initDataUnsafe.user.username;
             }
         </script>
         <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
