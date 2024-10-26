@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <title></title>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link href="css/style.css" rel="stylesheet">
+     </head>
+     <body>
+     <div id="nftcard">
+          
+     </div>
+     <button type="submit" onclick="tet()"></button>
+    <div id="ton-connect" style="position: absolute; top: 25%; right: 2%; display:inline;">
+     </body>
+     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+            let tg = window.Telegram.WebApp;
+        </script>
+        <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+     <script>
+    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: 'https://raw.githubusercontent.com/Maxutkoe/TgMayson/main/ton-manifest/tonconnect-manifest.json',
+        buttonRootId: 'ton-connect'
+    });
+
+    tonConnectUI.uiOptions = {
+      twaReturnUrl: 'https://t.me/lMaysonlBot'
+    };
+    async function crypto(){
+      const currentWallet = tonConnectUI.wallet.account.address;
+
+      var nftcard = document.getElementById("nftcard");
+      const nft = document.createElement('div');
+      nft.id = "nft";
+      nftcard.appendChild(nft);
+
+      nft.innerHTML = `
+      <a href="?wallet=${ currentWallet }">Test</a>
+      `;
+      
+    }
+    function tet(){
+      const currentWallet = tonConnectUI.wallet.account.address;
+     // const url = new URL(`file:///F:/Python/PhpTest/index.html?wallet=${currentWallet}&tokens=1000&price=1`);
+     const url = new URL(location.href);
+
+     wallet = url.searchParams.get('wallet'); // 'hello'
+     tokens = url.searchParams.get('tokens'); // 'hello'
+     price = url.searchParams.get('price'); // 'hello'
+     console.log(wallet + " " + tokens + "LST " + price + "TON");
+
+     localStorage.setItem('wallet', wallet);
+     localStorage.setItem('price', price);
+     localStorage.setItem('tokens', tokens);
+
+     // const myurl = `${url}?wallet=${wallet}?tokens=${tokens}?price=${price}`;
+     alert(url);
+     trans();
+    }
+    async function trans(){
+
+     wallet = localStorage.getItem('wallet');
+     price = localStorage.getItem('price');
+     tokens = localStorage.getItem('tokens');
+                const transaction = {
+                    validUntil: Math.round(Date.now() / 1000) + 100,
+                    messages: [
+                        {
+                            address: wallet,
+                            amount: price
+                        }
+                    ]
+                };
+
+                try{
+                    await tonConnectUI.sendTransaction(transaction);
+                    alert("Вы успешно отправили 0.01 TON!")
+                    alert(`Вот ваши ${tokens} LST`)
+                }
+                catch(e){
+                    console.error(e);
+                }
+    }
+    </script>
+</html>
