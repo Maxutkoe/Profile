@@ -79,7 +79,7 @@ body::-webkit-scrollbar {
   float: right;
 }
 .card__ccv__input {
-  width: 3.7rem;
+  width: 3.65rem;
 }
 .card .ui-selectmenu-button {
   float: left;
@@ -392,6 +392,7 @@ body {
     text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     font-weight: bold;
     transition: all linear 0.25s;
+    text-transform: uppercase;
 }
 
 .profile-card-2 .profile-icons {
@@ -506,8 +507,8 @@ body {
 	<div class="row">
 		<div class="col-md-4">
     <div class="profile-card-2"><img src="https://i.postimg.cc/QNbNrJcZ/photo-2024-10-04-18-03-05.jpg" id="profile-img" class="img img-responsive">
-        <div class="profile-name" id="profile-name">MAX SIDOROV</div>
-        <div class="profile-username" id="profile-username">@TEST</div>
+        <div class="profile-name" id="profile-name">Подключение...</div>
+        <div class="profile-username" id="profile-username">@Подключение...</div>
         <div class="profile-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
     </div>
     <div class="grid align__item">
@@ -516,7 +517,7 @@ body {
     <div class="card">
 
       <header class="card__header">
-        <h3 class="card__title">Payment Details</h3>
+        <h3 class="card__title">Кошелек</h3>
 
 
       </header>
@@ -524,16 +525,16 @@ body {
       <form action="" method="post" class="form">
 
         <div class="card__number form__field">
-          <label for="card__number" class="card__number__label">Card balance</label>
+          <label for="card__number" class="card__number__label">Баланс</label>
           <input type="text" id="card__number" class="card__number__input" value="Connect wallet..." readonly>
         </div>
 
         
         <div class="card__expiration form__field">
-          <label for="card__expiration__year-button">Expiration</label>
+          <label for="card__expiration__year-button">Срок действия</label>
           <span class="ui-selectmenu-button ui-widget ui-state-default ui-corner-all" tabindex="0" id="card__expiration__year-button" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-owns="card__expiration__year-menu" aria-haspopup="true" style="width: 90px;">
           <span class="ui-icon ui-icon-triangle-1-s"></span>
-          <span class="ui-selectmenu-text">October</span></span>
+          <span class="ui-selectmenu-text">Октябрь</span></span>
         
         <span class="ui-selectmenu-button ui-widget ui-state-default ui-corner-all" tabindex="0" id="ui-id-1-button" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-owns="ui-id-1-menu" aria-haspopup="true" style="width: 54px;">
         <span class="ui-icon ui-icon-triangle-1-s"></span>
@@ -564,7 +565,7 @@ body {
             let img = document.getElementById("profile-img");
             tg.expand();
 
-            window.setInterval(prize, 3000);
+            window.setInterval(prize, 1000);
 
             async function prize(){
               name.innerHTML = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
@@ -577,7 +578,7 @@ body {
         window.setInterval(data, 3000);
         window.setInterval(rrr, 1000);
         window.onload = function(){
-          setTimeout(crypto, 1000)
+          setTimeout(crypto, 2000)
         }
         // window.setInterval(crypto, 10000);
         // window.setInterval(crypto, 1000);
