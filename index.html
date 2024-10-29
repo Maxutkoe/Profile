@@ -21,8 +21,6 @@ body {
   color: #171a1c;
   font: 300 1rem/1.5 Source Sans Pro, sans-serif;
   margin: 0;
-  min-height: 70%;
-  max-height: 200%;
   padding: 5vw 0;
   overflow-x: hidden;
   
@@ -347,7 +345,7 @@ a:focus {
 }
 
 body {
-    background-color: #F1F2F3;
+    background-color: #000000;
     justify-content: center;
 }
 
@@ -377,6 +375,7 @@ body {
     cursor: pointer;
     border-radius: 10px;
     height: 100%;
+    box-shadow: 0px 0px 30px 5px rgba(255, 255, 255, 1);
 }
 
 .profile-card-2 img, .profile-card-3 img {
@@ -385,6 +384,7 @@ body {
     max-width: 100%;
     border-radius: 10px;
     height: 100%;
+    
 }
 
 .profile-card-2 .profile-name {
@@ -479,13 +479,13 @@ body {
 <style>
 .header {
   position: fixed;
-  top: 0;
+  top: -50px;
   opacity: 1;
   z-index: 5;
 
   left: 50%;
   border-radius: 0px 0px 12px 12px;
-  box-shadow: 0px 10px 30px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 10px 30px 10px rgba(255, 255, 255, 0.8);
   transform: translateX(-50%);
   transition: .3s all;
 
@@ -503,7 +503,7 @@ body {
 .menu {
   position: fixed;
   bottom: 3%;
-  left: 45%;
+  left: 42.5%;
   padding: 30px;
   
   background: #e8e8f3;
@@ -584,8 +584,11 @@ body {
 }
     </style>
 <header class="header">
-    <div id="ton-connect" style="position: absolute; top: 15%; right: 3%; display:inline; transform: scale(0.8);">
 </header>
+<header style="background: transparent; position: fixed; z-index: 5; top: 0%; right: 0%; width: 100%; height: 50px;">
+  <div id="ton-connect" style="position: absolute; top: 15%; right: 3%; display:inline; transform: scale(0.8);">
+</header>
+
 <div id="main" style="transform: scale(0.8)">
  <div class="container">
 	<div class="row">
@@ -597,8 +600,10 @@ body {
     </div>
     <div class="grid align__item">
 
-<p style="opacity: 0;">R</p>
-    <div class="card">
+    <br>
+    <br>
+
+    <div class="card"  style="box-shadow: 0px 0px 20px 1px rgba(255, 255, 255, 1);">
 
       <header class="card__header">
         <h3 class="card__title">Payment Details</h3>
@@ -634,8 +639,10 @@ body {
 
     </div>
     <br>
+    <br>
+    <br>
       <div class="grid align__item">
-    <div class="card" id="nftcard">
+    <div class="card" id="nftcard"  style="box-shadow: 0px 0px 30px 5px rgba(255, 255, 255, 1);">
       <header class="card__header">
         <h3 class="card__title">NFTs</h3>
       </header>
@@ -656,7 +663,7 @@ body {
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
             let tg = window.Telegram.WebApp;
-            let buy = document.getElementById("order")
+            tg.setHeadercolor("#FFFFFF");
             tg.expand();
         </script>
         <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
@@ -678,7 +685,7 @@ body {
     tonConnectUI.uiOptions = {
         uiPreferences: {
             borderRadius: 's',
-            theme: "SYSTEM"
+            theme: "LIGHT"
         }
     };
 
