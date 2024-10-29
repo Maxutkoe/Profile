@@ -593,7 +593,7 @@ body {
     </div>
     <div class="grid align__item">
 
-    <input class="card__number__input" id="prize" style="color: #000000;" readonly>
+<p style="opacity: 0;">R</p>
     <div class="card">
 
       <header class="card__header">
@@ -810,8 +810,8 @@ body {
       nftcard.appendChild(nft);
 
       nft.innerHTML = `
-      <a href="${ nfts.nft_items[0].metadata.external_url }"><div class="tooltip" style="position: relative; color: white; padding: 10px 10px 10px 10px; min-height: 60%; max-heiight: 100%"><span class="tooltiptext">${ nfts.nft_items[0].metadata.description }</span>
-    <img style="border-radius: 12px; min-width: 60%; max-width: 100%; min-height: 60%; max-height: 100%;" src="https://s.getgems.io/nft/s/6664/6664d08e8463d5c3f2821fa7/nft/834141.png"" alt="изображение" class="photo">
+      <a href="${ nfts.nft_items[0].metadata.external_url }"><div class="tooltip" style="position: relative; color: white; padding: 10px 10px 10px 10px; min-height: 60%; max-heiight: 100%; transform: scale(1.1)"><span class="tooltiptext">${ nfts.nft_items[0].metadata.description }</span>
+    <img style="border-radius: 12px; min-width: 60%; max-width: 100%; min-height: 60%; max-height: 100%;" src="${nfts.nft_items[0].metadata.image}"" alt="изображение" class="photo">
     <div style="position: absolute; top: 3%; right: 6%; z-index: 10; min-width: 10%; max-height: 60%;"><h2 style="font-size: calc(14px + 16 * (40vw / 1280));">${ nfts.nft_items[0].metadata.name }</h2></div>
    </div></a>
       `;
