@@ -23,6 +23,7 @@ body {
   margin: 0;
   min-height: 100%;
   padding: 5vw 0;
+  overflow-x: hidden;
 }
 body::-webkit-scrollbar {
     display: none;
@@ -363,8 +364,8 @@ body {
 
 .profile-card-2, .profile-card-3 {
     max-width: 600px;
-    padding: 10px 10px 5px 10px;
-    background-color: transparent;
+    padding: 0px 0px -5px 0px;
+    background-color: #0e0e0e;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 1.8);
     background-position: center;
     overflow: hidden;
@@ -487,27 +488,107 @@ body {
   width: 100%;
   max-height: 7%;
   min-height: 7%;
-  background: linear-gradient(to right, #874efe, #4d22b3);
+  background: transparent;
 }
 </style>
-<script>
-    document.addEventListener('scroll', function () {
-        if ($(window).scrollTop() > 1000)) {
-            $('.js-header-fixed').addClass('is-show');
-        } else {
-            $('.js-header-fixed').removeClass('is-show');
-        }
-    })
-</script>
+<style>
+    html {
+  place-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu {
+  position: fixed;
+  bottom: 5%;
+  left: 45%;
+  padding: 30px;
+  background: #e8e8f3;
+  border-radius: 100%;
+  cursor: pointer;
+  box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px rgba(255, 255, 255, 1), inset 0px 0px 4px rgba(255, 255, 255, 0.2), inset 7px 7px 15px rgba(55, 84, 170, 0), inset -7px -7px 20px rgba(255, 255, 255, 0), 0px 0px 4px rgba(255, 255, 255, 0);
+  &::before, &::after {
+    content: "";
+    background: #000000;
+    border-radius: 5px;
+    width: 30px;
+    height: 5px;
+    position: absolute;
+    left: 16px;
+    top: 27px;
+    transition: 0.2s ease;
+    z-index: 1;
+  }
+  &::before {
+    transform: rotate(0deg);
+  }
+  &::after {
+    transform: rotate(-90deg);
+  }
+  &.open {
+    opacity: .9;
+    &::before {
+      transform: rotate(45deg);
+    }
+    &::after {
+      transform: rotate(-45deg);
+    }
+    .button {
+      opacity: 1;
+      pointer-events: auto;
+      &:first-of-type {
+        bottom: 40px;
+        right: 70px;
+      }
+      &:nth-of-type(2) {
+        bottom: 80px;
+        transition-delay: .05s;
+      }
+      &:last-of-type {
+        bottom: 40px;
+        right: -70px;
+        transition-delay: .1s;
+      }
+    }
+  }
+}
+
+.button {
+  padding: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #e8e8f3;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: inherit;
+  transition: 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28), 0.2s ease opacity, 0.2s cubic-bezier(.08,.82,.17,1) transform;
+  z-index: -1;
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:first-of-type {
+    background: url('https://assets.codepen.io/3537853/cam.svg') no-repeat 50%/50% #000000;
+  }
+  &:nth-of-type(2) {
+    background: url('https://assets.codepen.io/3537853/img.svg') no-repeat 50%/ 50% #000000;
+  }
+  &:last-of-type {
+    background: url('https://assets.codepen.io/3537853/music.svg') no-repeat 50% 45%/50% 45% #000000;
+  }
+}
+    </style>
 <header class="header">
     <div id="ton-connect" style="position: absolute; top: 25%; right: 2%; display:inline;">
 </header>
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-4">
     <div class="profile-card-2"><img src="https://i.postimg.cc/QNbNrJcZ/photo-2024-10-04-18-03-05.jpg" class="img img-responsive" id="copyimage">
-        <div class="profile-name" id="profile-name">ИМЯ ФАМИЛИЯ</div>
-        <div class="profile-username" id="profile-username">@Test</div>
+        <div class="profile-name" id="profile-name">Подключение...</div>
+        <div class="profile-username" id="profile-username">@Подключение...</div>
         <div class="profile-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
     </div>
     <div class="grid align__item">
@@ -555,6 +636,12 @@ body {
         <h3 class="card__title">NFTs</h3>
       </header>
   </div>
+</div>
+    <div class="menu" onclick="this.classList.toggle('open')">
+  <div class="button"></div>
+  <div class="button"></div>
+  <div class="button"></div>
+</div>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
@@ -671,7 +758,7 @@ body {
       // const currentWallet = tonConnectUI.wallet.account.address;
       text = document.getElementById("impor");
       const wallet = "0:0000000000000000000000000000000000000000000000000000000000000000";
-      const price = 10000;
+      const price = 1000000000;
       const tokens = Math.random(0, 2000);
       const link = `https://maxutkoe.github.io/Profile/PhpTest/?wallet=${wallet}&price=${price}&tokens=${tokens}`; 
       // alert(link);
