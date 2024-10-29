@@ -501,7 +501,7 @@ body {
 .menu {
   position: fixed;
   bottom: 3%;
-  left: 50%;
+  left: 48%;
   padding: 30px;
   background: #e8e8f3;
   border-radius: 100%;
@@ -832,9 +832,8 @@ body {
         let name = document.getElementById("profile-name");
         let username = document.getElementById("profile-username");
 
-        name.value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
-        username.value = tg.initDataUnsafe.user.username;
-        console.log(tg.initDataUnsafe.user.photo_url);
+        name.innerHTML = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
+        username.innerHTML = tg.initDataUnsafe.user.username;
         tg.expand();
     }
       
