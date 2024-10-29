@@ -346,15 +346,19 @@ a:focus {
 
 body {
     background-color: #F1F2F3;
+    justify-content: center;
 }
 
 .container-fluid,
 .container {
     min-width: 60%;
     max-width: 100%;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
 }
 
 .card-container {
+    padding: 100px 0px;
     -webkit-perspective: 1000;
     perspective: 1000;
 }
@@ -496,8 +500,8 @@ body {
 
 .menu {
   position: fixed;
-  bottom: 5%;
-  left: 45%;
+  bottom: 3%;
+  left: 50%;
   padding: 30px;
   background: #e8e8f3;
   border-radius: 100%;
@@ -650,9 +654,9 @@ body {
         <script src="https://unpkg.com/@tonconnect/sdk@0.0.34/dist/tonconnect-sdk.min.js"></script>
         <script>
         window.setInterval(data, 3000);
-        window.setInterval(rrr, 1000);
+        // window.setInterval(rrr, 1000);
         window.setInterval(prize, 3000);
-        window.setInterval(pp, 1000);
+        window.onload = function() {setTimeout(pp, 3000)};
         window.onload = function(){
           setTimeout(crypto, 1000)
         }
@@ -662,6 +666,12 @@ body {
         manifestUrl: 'https://raw.githubusercontent.com/Maxutkoe/TgMayson/main/ton-manifest/tonconnect-manifest.json',
         buttonRootId: 'ton-connect'
     });
+    tonConnectUI.uiOptions = {
+        uiPreferences: {
+            borderRadius: 's',
+            theme: "SYSTEM"
+        }
+    };
 
     tonConnectUI.uiOptions = {
       twaReturnUrl: 'https://t.me/lMaysonlBot'
