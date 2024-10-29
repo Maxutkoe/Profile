@@ -21,9 +21,11 @@ body {
   color: #171a1c;
   font: 300 1rem/1.5 Source Sans Pro, sans-serif;
   margin: 0;
-  min-height: 100%;
+  min-height: 70%;
+  max-height: 150%;
   padding: 5vw 0;
   overflow-x: hidden;
+  
 }
 body::-webkit-scrollbar {
     display: none;
@@ -502,6 +504,7 @@ body {
   bottom: 3%;
   left: 45%;
   padding: 30px;
+  
   background: #e8e8f3;
   border-radius: 100%;
   cursor: pointer;
@@ -582,10 +585,10 @@ body {
 <header class="header">
     <div id="ton-connect" style="position: absolute; top: 15%; right: 3%; display:inline; transform: scale(0.8);">
 </header>
-
-<div class="container">
+<div id="main" style="transform: scale(0.8)">
+ <div class="container">
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-4"></div>
     <div class="profile-card-2"><img src="https://i.postimg.cc/QNbNrJcZ/photo-2024-10-04-18-03-05.jpg" class="img img-responsive" id="copyimage">
         <div class="profile-name" id="profile-name">Подключение...</div>
         <div class="profile-username" id="profile-username">@Подключение...</div>
@@ -637,10 +640,16 @@ body {
       </header>
   </div>
 </div>
-    <div class="menu" onclick="this.classList.toggle('open')">
+</div>
+</div>
+</div>
+</div>
+<div id="menuDiv">
+  <div class="menu" onclick="this.classList.toggle('open')">
   <div class="button"></div>
   <div class="button"></div>
   <div class="button"></div>
+</div>
 </div>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -819,8 +828,7 @@ body {
 
       nft.style=`
     .photo:hover::after {
-    
-    `
+    }`
       // for(i in jettons.balances){
         // console.log(JSON.stringify(jettons.balances[i].jetton.name) + " " + JSON.stringify(truncateToTwo(jettons.balances[i].balance / 1000000000)) + " ≈ " + JSON.stringify(truncateToTwo(jettons.balances[i].balance / 1000000000)));
       // }
