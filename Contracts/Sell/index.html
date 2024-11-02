@@ -353,7 +353,7 @@ h6 span{
 										<div class="section text-center">
                       <h4 class="mb-4 pb-3" id="priceText">Объявление</h4>
 											<div class="form-group">
-												<input type="text" name="logname" class="form-style" placeholder="LST" id="LST" autocomplete="off">
+												<input type="number" name="logname" class="form-style" placeholder="LST" id="LST" autocomplete="off">
 											</div>	
 											<div class="form-group mt-2">
 												<input type="text" name="logpass" class="form-style" placeholder="TON" id="TON" autocomplete="off">
@@ -417,9 +417,8 @@ async function sendMessage()
     let data = {
         wallet: wallet,
         lst: lst,
-        ton: ton,
+        ton: ton*1000000000,
         comment: comment,
-        link: link,
     };
     tg.sendData(JSON.stringify(data));
     tg.close();
