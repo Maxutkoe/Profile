@@ -351,17 +351,17 @@ h6 span{
 								<div class="card-front">
 									<div class="center-wrap">
 										<div class="section text-center">
-                                            <h4 class="mb-4 pb-3" id="priceText">0.01 TON</h4>
+                      <h4 class="mb-4 pb-3" id="priceText">Объявление</h4>
 											<div class="form-group">
-												<input type="text" name="logname" class="form-style" placeholder="LST" id="logname" autocomplete="off">
+												<input type="text" name="logname" class="form-style" placeholder="LST" id="LST" autocomplete="off">
 											</div>	
 											<div class="form-group mt-2">
-												<input type="text" name="logpass" class="form-style" placeholder="TON" id="logpass" autocomplete="off">
+												<input type="text" name="logpass" class="form-style" placeholder="TON" id="TON" autocomplete="off">
 											</div>
                                             <div class="form-group mt-2">
-												<textarea type="text" name="logpass" class="form-style" placeholder="Комментарии" id="logpass" autocomplete="off" style="height: 110px; resize: none;"></textarea>
+												<textarea type="text" name="logpass" class="form-style" placeholder="Комментарии" id="COMMENT" autocomplete="off" style="height: 110px; resize: none;"></textarea>
 											</div>
-											<a href="#" class="btn mt-4" onclick="tet()">Подтвердить</a>
+											<a href="#" class="btn mt-4" onclick="send()">Отправить</a>
 				      					</div>
 			      					</div>
 			      				</div>
@@ -379,20 +379,17 @@ h6 span{
 	      	</div>
 	    </div>
 	</div>
-  
-      <script id="rendered-js">
-/* ========================================= * 
-		        BEST VIEWED FULLSCREEN
-   https://codepen.io/ig_design/full/KKVQpVP
- * ========================================= */
-//# sourceURL=pen.js
-    </script>
     <div id="ton-connect" style="position: absolute; top: 5%; right: 2%; display:inline;">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
 
     <script>
-        let tg = window.Telegram.WebApp;
+    let telegram = {
+    token: "7793998298:AAFkeTSOtINXDRELuGV1ZWlsif-F3WVowQE", // Your bot's token that got from @BotFather
+    chat_id: "-1002447318654" // The user's(that you want to send a message) telegram chat id
+    };
+
+    const truncateToTwo = num => Math.floor(num * 100) / 100;
     const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
         manifestUrl: 'https://raw.githubusercontent.com/Maxutkoe/TgMayson/main/ton-manifest/tonconnect-manifest.json',
         buttonRootId: 'ton-connect'
@@ -401,124 +398,40 @@ h6 span{
     tonConnectUI.uiOptions = {
       twaReturnUrl: 'https://t.me/lMaysonlBot'
     };
-
-    async function load(){
-      const currentWallet = tonConnectUI.wallet.account.address;
-     // const url = new URL(`file:///F:/Python/PhpTest/index.html?wallet=${currentWallet}&tokens=1000&price=1`);
-      const url = new URL(location.href);
-
-      let tokens = url.searchParams.get('tokens'); // 'hello'
-      let price = url.searchParams.get('price'); // 'hello'
-
-      document.getElementById("priceText").innerHTML = price / 1000000000 + " TON";
-      document.getElementById("logname").value = tokens + " LST";
-      // console.log(wallet + " " + tokens + "LST " + price + "TON");
-      alert("dd");
-      
-    }
-
-    function tet(){
-      const currentWallet = tonConnectUI.wallet.account.address;
-     // const url = new URL(`file:///F:/Python/PhpTest/index.html?wallet=${currentWallet}&tokens=1000&price=1`);
-     const url = new URL(location.href);
-
-     wallet = url.searchParams.get('wallet'); // 'hello'
-     tokens = url.searchParams.get('tokens'); // 'hello'
-     price = url.searchParams.get('price'); // 'hello'
-     console.log(wallet + " " + tokens + "LST " + price + "TON");
-
-     localStorage.setItem('wallet', wallet);
-     localStorage.setItem('price', price);
-     localStorage.setItem('tokens', tokens);
-
-     // const myurl = `${url}?wallet=${wallet}?tokens=${tokens}?price=${price}`;
-     alert(url);
-     trans();
-    }
-    async function trans(){
-
-     wallet = localStorage.getItem('wallet');
-     price = localStorage.getItem('price');
-     tokens = localStorage.getItem('tokens');
-                const transaction = {
-                    validUntil: Math.round(Date.now() / 1000) + 100,
-                    messages: [
-                        {
-                            address: wallet,
-                            amount: price
-                        },
-                        {
-                            address: "UQCwZJMC1YRv_kG2Q6CF0H74t3IcWrRjJn1aE4nDWYj_ILUp",
-                            amount: "2000" //200000000
-                        }
-                    ]
-                };
-
-                try{
-                    await tonConnectUI.sendTransaction(transaction);
-                    alert(`Вы успешно отправили ${price} TON!`)
-                    alert(`Вот ваши ${tokens} LST`)
-                }
-                catch(e){
-                    console.error(e);
-                }
-    }
-    </script>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-
-
-    // window.setInterval(tonPrice, 1000);
-
-    let telegram = {
-    token: "7793998298:AAFkeTSOtINXDRELuGV1ZWlsif-F3WVowQE", // Your bot's token that got from @BotFather
-    chat_id: "-1002447318654" // The user's(that you want to send a message) telegram chat id
-    }
-    const truncateToTwo = num => Math.floor(num * 100) / 100;
-
-/**
- * By calling this function you can send message to a specific user
- * @param {String} the text to send
- *
-*/
-function sendMessage(text)
+async function sendMessage()
 {
-    const url = `https://api.telegram.org/bot${telegram.token}/sendMessage?chat_id=${telegram.chat_id}&text=${text}`; // The url to request
-    const xht = new XMLHttpRequest();
-    xht.open("GET", url);
-    xht.send();
-}
-
-async function tonPrice(){
-    const resp = await fetch('https://tonapi.io/v2/rates?tokens=ton&currencies=ton%2Cusd%2Crub');
-    const data = await resp.json();
-
-    let tonprice = document.getElementById("TON");
-    tonprice.placeholder = "TON ≈ " + truncateToTwo(data.rates.TON.prices.RUB);
-}
-
-// Now you can send any text(even a form data) by calling sendMessage function.
-// For example if you want to send the 'hello', you can call that function like this:
-async function send(){
-    const wallet = tonConnectUI.wallet.account.address;
-    const lst = document.getElementById("LST").value;
-    const ton = document.getElementById("TON").value;
-    const comment = document.getElementById("COMMENT").value;
-    const link = `https://maxutkoe.github.io/Profile/PhpTest/?wallet=${wallet}&price=${ton*1000000000}&tokens=${lst}&comment=${comment}`; 
-    // console.log(link);
-    const name = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
-    const username = tg.initDataUnsafe.user.username;
+    // const url = `https://api.telegram.org/bot${telegram.token}/sendMessage?chat_id=${telegram.chat_id}&text=${text}`; // The url to request
+    // const xht = new XMLHttpRequest();
+    // xht.open("GET", url);
+    // xht.send();
+    let tg = window.Telegram.WebApp;
     tg.expand();
-    const text = `${name} %0A@${username} %0A%0A${lst} LST - ${ton} TON %0A%0A${comment} %0A%0A${link}`
 
-    sendMessage(`${name} %0A${username} %0A${LST} - ${TON} %0A${link}`);
+    let wallet = tonConnectUI.wallet.account.address;
+    let lst = document.getElementById("LST").value;
+    let ton = document.getElementById("TON").value;
+    let comment = document.getElementById("COMMENT").value;
+    let link = `https://maxutkoe.github.io/Profile/Contracts/Pay/?wallet=${wallet}&price=${ton*1000000000}&tokens=${lst}&comment=${comment}`; 
+
+
+    let data = {
+        wallet: wallet,
+        lst: lst,
+        ton: ton,
+        comment: comment,
+        link: link,
+    };
+    tg.sendData(JSON.stringify(data));
+    tg.close();
 
 }
-    </script>
-    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
-        <script src="https://unpkg.com/@tonconnect/sdk@0.0.34/dist/tonconnect-sdk.min.js"></script>
-    <script>
-    async function copy(){
+async function send(){
+    alert("HH");
+    sendMessage();
+    // sendMessage(`${name} %0A${username} %0A${LST} - ${TON} %0A${link}`);
+
+}
+/*async function copy(){
       document.querySelector('#copyimage').addEventListener('click', () => {
       navigator.clipboard.writeText(link)
         .then(() => {
@@ -528,11 +441,7 @@ async function send(){
           console.error(`Текст не скопирован ...`)
         })
       })
-    }
+    }*/
       
 </script>
-  
-
-
-
 </body></html>
