@@ -417,7 +417,7 @@ async function sendMessage()
     let data = {
         wallet: wallet,
         lst: lst,
-        ton: ton*1000000000,
+        ton: ton,
         comment: comment,
     };
     tg.sendData(JSON.stringify(data));
