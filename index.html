@@ -796,6 +796,7 @@ body {
       })
     }
     async function crypto(){
+      window.scrollTo(0, 150); // values are x,y-offset
       const currentWallet = tonConnectUI.wallet.account.address;
       const tvaccurl = await fetch(`https://tonapi.io/v2/accounts/${ currentWallet }`);
       const tvjeturl = await fetch(`https://tonapi.io/v2/accounts/${ currentWallet }/jettons`);
