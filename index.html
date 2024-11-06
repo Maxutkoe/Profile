@@ -6,6 +6,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
     </head>
+
+    <!-- 
+    Main BG: background-color: #040f16;
+    Second BG: background-color: #171a1c;
+
+    Border color: background-color: #ffffff;
+
+    Correct Color: background-color: #3b28cc;
+    Second Correct Color: background-color: #3f8efc;
+    Third Correct Color: background-color: #87bfff;
+
+    -->
     <body>
       <style id="INLINE_PEN_STYLESHEET_ID">
     * {
@@ -345,7 +357,7 @@ a:focus {
 }
 
 body {
-    background-color: #000000;
+    	background-color: #ffffff;
     justify-content: center;
 }
 
@@ -375,7 +387,7 @@ body {
     cursor: pointer;
     border-radius: 10px;
     height: 100%;
-    box-shadow: 0px 0px 30px 5px rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 1);
 }
 
 .profile-card-2 img, .profile-card-3 img {
@@ -485,7 +497,7 @@ body {
 
   left: 50%;
   border-radius: 0px 0px 12px 12px;
-  box-shadow: 0px 12px 20px 10px rgba(255, 255, 255, 1);
+  box-shadow: 0px 12px 20px 10px rgba(0, 0, 0, 1);
   transform: translateX(-50%);
   transition: .3s all;
 
@@ -506,7 +518,7 @@ body {
   left: 42.5%;
   padding: 30px;
   
-  background: #e8e8f3;
+  background: #fff;
   border-radius: 100%;
   cursor: pointer;
   box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px rgba(255, 255, 255, 1), inset 0px 0px 4px rgba(255, 255, 255, 0.2), inset 7px 7px 15px rgba(55, 84, 170, 0), inset -7px -7px 20px rgba(255, 255, 255, 0), 0px 0px 4px rgba(255, 255, 255, 0);
@@ -560,7 +572,7 @@ body {
   padding: 30px;
   border-radius: 50%;
   cursor: pointer;
-  background: #e8e8f3;
+  background: #ffffff;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -603,7 +615,7 @@ body {
     <br>
     <br>
 
-    <div class="card"  style="box-shadow: 0px 0px 20px 1px rgba(255, 255, 255, 1);">
+    <div class="card"  style="box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 1);">
 
       <header class="card__header">
         <h3 class="card__title">Payment Details</h3>
@@ -642,7 +654,7 @@ body {
     <br>
     <br>
       <div class="grid align__item">
-    <div class="card" id="nftcard"  style="box-shadow: 0px 0px 30px 5px rgba(255, 255, 255, 1);">
+    <div class="card" id="nftcard"  style="box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 1);">
       <header class="card__header">
         <h3 class="card__title">NFTs</h3>
       </header>
@@ -663,7 +675,7 @@ body {
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
             let tg = window.Telegram.WebApp;
-            tg.setHeaderColor("#FFFFFF");
+            tg.setHeaderColor("#000000");
             tg.expand();
         </script>
         <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
@@ -774,7 +786,7 @@ body {
       const balance = wallet.balance / 1000000000
 
       let tonprice = document.getElementById("tonprice");
-      tonprice.placeholder = "≈ " + balance * data.rates.TON.prices.RUB;
+      tonprice.placeholder = "≈ " + (balance * data.rates.TON.prices.RUB).toFixed(2);
       // console.log(data.rates.TON.prices.RUB);
     }
     async function pp(){
